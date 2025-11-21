@@ -23,9 +23,9 @@ let wrongSound = new Audio("sounds/wrong.mp3");
 let bgm = new Audio("sounds/bgm.mp3");
 bgm.loop = true;
 
-// Game Start
-document.addEventListener("keypress" , function(){
-    if(gameStart == false){
+// Start on PC (keyboard)
+document.addEventListener("keypress", function(){
+    if(!gameStart){
         gameStart = true;
         level = 0;
         h2.innerHTML = `Game Started...<br>Level: ${level}`;
@@ -34,6 +34,19 @@ document.addEventListener("keypress" , function(){
         bgm.play();
     }
 });
+
+// Start on Mobile (touch)
+document.addEventListener("touchstart", function () {
+    if(!gameStart){
+        gameStart = true;
+        level = 0;
+        h2.innerHTML = `Game Started...<br>Level: ${level}`;
+        levelUp();
+        startSound.play();
+        bgm.play();
+    }
+});
+
 
 
 // Game Flash 
