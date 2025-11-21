@@ -1,0 +1,144 @@
+/* ==========================================
+   Global Styling
+========================================== */
+body {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  background: #f5f5f5;
+}
+
+h1 {
+  margin-top: 40px;
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #333;
+}
+
+h2 {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* ==========================================
+   Button Container & Layout
+========================================== */
+.btn-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3rem;
+  gap: 1.5rem;
+}
+
+.line-one,
+.line-two {
+  display: flex;
+  gap: 1.5rem;
+}
+
+/* ==========================================
+   Game Buttons
+========================================== */
+.btn {
+  height: 180px;
+  width: 180px;
+  border-radius: 18%;
+  border: 8px solid #222;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #fff;
+  user-select: none;
+
+  /* Soft shadow */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Button Colors */
+.red {
+  background-color: #d9534f;
+}
+
+.yellow {
+  background-color: #f0ad4e;
+}
+
+.green {
+  background-color: #5cb85c;
+}
+
+.purple {
+  background-color: #5b7cfa;
+}
+
+/* Hover effect */
+.btn:hover {
+  transform: scale(1.07);
+  box-shadow: 0px 6px 22px rgba(0, 0, 0, 0.25);
+}
+
+
+.flash {
+  background-color: #ffffff !important;
+  transition: 0.1s;
+}
+
+.userflash {
+  background-color: #00c851 !important;
+  transition: 0.1s;
+}
+
+/* Game Over Flash */
+.game-over {
+  background-color: red !important;
+}
+
+
+footer {
+  margin-top: 6rem;
+  padding: 15px 0;
+  background: #111;
+  color: #fff;
+}
+
+footer h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+footer b {
+  color: #ffe600;
+}
+
+
+@media (max-width: 600px) {
+  .btn {
+    height: 140px;
+    width: 140px;
+    border-width: 6px;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  h2 {
+    font-size: 1rem;
+  }
+
+  .line-one,
+  .line-two {
+    gap: 1rem;
+  }
+
+  footer {
+    margin-top: 10rem;
+  }
+}
