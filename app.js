@@ -23,27 +23,33 @@ let wrongSound = new Audio("sounds/wrong.mp3");
 let bgm = new Audio("sounds/bgm.mp3");
 bgm.loop = true;
 
+// MOBILE DOUBLE-TOUCH FIX
+let touchLock = false;
+
+// ===== START GAME FUNCTION =====
+function startGame() {
+    gameStart = true;
+    level = 0;
+    h2.innerHTML = `Game Started...<br>Level: ${level}`;
+    levelUp();
+    startSound.play();
+    bgm.play();
+}
+
+
+
+
 // Start on PC (keyboard)
-document.addEventListener("keypress", function(){
-    if(!gameStart){
-        gameStart = true;
-        level = 0;
-        h2.innerHTML = `Game Started...<br>Level: ${level}`;
-        levelUp();
-        startSound.play();
-        bgm.play();
-    }
+document.addEventListener("keypress", function () {
+    if (!gameStart) startGame();
 });
 
 // Start on Mobile (touch)
 document.addEventListener("touchstart", function () {
-    if(!gameStart){
-        gameStart = true;
-        level = 0;
-        h2.innerHTML = `Game Started...<br>Level: ${level}`;
-        levelUp();
-        startSound.play();
-        bgm.play();
+    if (!gameStart && !touchLock) {
+        touchLock = true;
+        startGame();
+        setTimeout(() => touchLock = false, 300); // prevents double triggering
     }
 });
 
@@ -74,7 +80,7 @@ function levelUp(){
     gameFlash(randomButton);
     gameSequence.push(randomColor);
     h2.innerHTML = `Game Started...<br>Level: ${level}`;
-    console.log(gameSequence);
+    // console.log(gameSequence);
 
     userSequence = [];
     
@@ -82,16 +88,13 @@ function levelUp(){
 
 
 function ButtonPressed(){
-    // console.log(this.id); press button id
     userFlash(this);
     userSequence.push(this.id);
 
-    maxScore = Math.max(maxScore, level);
+    maxScore = Math.max(maxScore, level-1);
     highScore.innerHTML = maxScore;
 
-
     checkAns(userSequence.length-1);
-
 }
 
 for(btn of btns){
@@ -101,19 +104,24 @@ for(btn of btns){
 function checkAns(index){
     if(gameSequence[index] === userSequence[index]){
         if(userSequence.length == gameSequence.length){
-            setTimeout(levelUp , 1000);
             winSound.play();
+            setTimeout(levelUp , 800);
             
         }
     }
     else{
-        h2.innerHTML = `<b>Game Over...Your score was ${level}<br>press any key to restart</b>`;
-        document.querySelector("body").style.backgroundColor = "red";
-        setTimeout(function(){document.querySelector("body").style.backgroundColor = "white" }, 200);
-        reset();
-        wrongSound.play();
-        bgm.pause();
-    }
+    h2.innerHTML = `<b>Game Over...Your score was ${level-1}<br>press any key to restart</b>`;
+    document.querySelector("body").style.backgroundColor = "red";
+    setTimeout(function(){
+        document.querySelector("body").style.backgroundColor = "white"
+    }, 200);
+
+    wrongSound.play();
+    bgm.pause();
+
+    reset();
+}
+
 }
 
 function reset(){

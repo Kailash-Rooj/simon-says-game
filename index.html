@@ -21,11 +21,48 @@
     </div>
   </div>
 
+  <button id="openRules" class="rules-btn">How to Play</button>
+
+<div id="rulesModal" class="modal">
+    <div class="modal-content">
+        <span id="closeModal" class="close">&times;</span>
+        <h2>🧩 SIMON GAME – Rules</h2>
+        
+        <div class="rules-text">
+            <p><b>🎯 Goal:</b> Remember the flashing color sequence and repeat it correctly. Each level adds a new color.</p>
+
+            <p><b>🕹️ Start:</b><br>
+            • Press any key (Computer)<br>
+            • Tap anywhere (Mobile)</p>
+
+            <p><b>🌈 How It Works:</b><br>
+            • The game flashes a random color.<br>
+            • You press the same color.<br>
+            • Every level adds one more color.</p>
+
+            <p><b>👆 Your Turn:</b><br>
+            Tap/click buttons in the same order. Complete the sequence → Next level!</p>
+
+            <p><b>❌ Game Over:</b><br>
+            • Wrong color<br>
+            • Wrong order<br>
+            • Clicking too fast</p>
+
+            <p><b>🏆 Scoring:</b><br>
+            Score = Completed levels (High Score is saved).</p>
+
+            <p><b>⭐ Enjoy the game!</b></p>
+        </div>
+    </div>
+</div>
+
+
   <footer>
     <h3>Your highest score is <b class = "highScore">0</b></h3>
   </footer>
 
   <script src="app.js"></script>
+  <script src="popup.js"></script>
 </body>
 </html>
 
